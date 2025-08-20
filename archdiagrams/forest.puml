@@ -1,0 +1,20 @@
+@startuml C1_XXE_Forest
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+' SYSTEM CONTEXT VIEW
+LAYOUT_WITH_LEGEND()
+
+Person(admin, "IT Admin", "Manages domain controllers and directory services")
+
+System(XXE, "External Users Directory (XXE)", "Central Active Directory service for external users")
+
+System_Ext(AMR, "AMR Region", "Americas data centers")
+System_Ext(EMA, "EMA Region", "Europe/Middle East/Africa data centers")
+System_Ext(ASPAC, "ASPAC Region", "Asia-Pacific data centers")
+
+admin -> XXE : Manages and configures
+XXE -> AMR : Synchronization and replication
+XXE -> EMA : Synchronization and replication
+XXE -> ASPAC : Synchronization and replication
+
+@enduml
